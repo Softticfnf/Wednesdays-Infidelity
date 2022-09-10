@@ -15,6 +15,10 @@
 	<!-- ____________________________ Window Settings ___________________________ -->
 
 	<window width="1280" height="720" fps="" background="#000000" hardware="true" vsync="false" />
+	
+	<!--Mobile-specific-->
+	<window if="mobile" orientation="landscape" fullscreen="true" width="1280" height="720" resizable="false"/>
+
 
 	<window orientation="landscape" fullscreen="false" resizable="true" vsync="false"/>
 
@@ -41,8 +45,6 @@
 
 	<assets path="assets/preload" rename="assets" exclude="*.ogg" if="web"/>
 	<assets path="assets/preload" rename="assets" exclude="*.mp3"  unless="web"/>
-
-	<assets path="assets/devs" rename="devs folder"/>
 
 	<!-- DONT ENABLE THIS -->
 	<define name="CHECK_FOR_UPDATES" if="desktop officialBuild"/>
@@ -80,8 +82,9 @@
 	<haxelib name="flixel-ui" />
 	<haxelib name="hxp" />
 	<haxelib name="flxanimate" />
-	<haxelib name="discord_rpc"/>
+	<haxelib name="discord_rpc" if="desktop"/>
 	<haxelib name="hxCodec"/>
+	<haxelib name="extension-androidtools" if="android"/>
 
 	<!-- ______________________________ Haxedefines _____________________________ -->
 
@@ -91,9 +94,23 @@
 	<!--Disable the Flixel core debugger. Automatically gets set whenever you compile in release mode!-->
 	<haxedef name="FLX_NO_DEBUG" unless="debug" />
 
-	<error value="Targets besides desktop are not supported" unless="desktop" />
+	
 
 	<haxedef name="no-deprecation-warnings" />
+	
+	<!-- make's game use less ram -->
+	<haxedef name="HXCPP_GC_BIG_BLOCKS"/>
+
+	<!-- Akways enable Null Object Reference check -->
+	<haxedef name="HXCPP_CHECK_POINTER" if="release" />
+	<haxedef name="HXCPP_STACK_LINE" if="release" />
+
+	<!-- Android stuff: thanks Yoshi Engine -->
+	<android permission="android.permission.ACCESS_NETWORK_STATE"/>
+	<android permission="android.permission.INTERNET"/>
+	<android permission="android.permission.VIBRATE"/>
+	<android permission="android.permission.WRITE_EXTERNAL_STORAGE"/>
+	<android permission="android.permission.READ_EXTERNAL_STORAGE"/>
 
 	<!-- _________________________________ Custom _______________________________ -->
 
