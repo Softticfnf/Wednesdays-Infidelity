@@ -484,8 +484,9 @@ class PlayState extends MusicBeatState
 	public var chrom:ChromaticAberrationEffect;
 
 	public var chromTweens:Array<FlxTween> = [];
-
+    #if desktop 
 	public var vhs:VHSEffect;
+	#end
 	public var distort:DistortionEffect;
 
 	public var shaderUpdates:Array<Float->Void> = [];
@@ -1234,6 +1235,10 @@ class PlayState extends MusicBeatState
 		weekMissesTxt.cameras = [camHUD];
 		botplayTxt.cameras = [camHUD];
 		cutsceneText.cameras = [camOther];
+		
+		#if android
+        addAndroidControls();
+        #end
 
 		// if (SONG.song == 'South')
 		// FlxG.camera.alpha = 0.7;
@@ -1300,9 +1305,11 @@ class PlayState extends MusicBeatState
 					{
 						try
 						{
+						  #if desktop 
 							vhs = new util.Shaders.VHSEffect();
 
 							addShaderToCamera('camGame', vhs);
+					      #end
 						}
 						catch (e)
 						{
@@ -1489,11 +1496,16 @@ class PlayState extends MusicBeatState
 		{
 			return;
 		}
+		   
 
 		inCutscene = false;
 
 		if (skipCountdown || startOnTime > 0)
 			skipArrowStartTween = true;
+			
+		    #if android
+            androidc.visible = true;
+            #end
 
 		generateStaticArrows(0);
 		generateStaticArrows(1);
@@ -3541,6 +3553,10 @@ class PlayState extends MusicBeatState
 				return;
 			}
 		}
+		
+		#if android
+        androidc.visible = false;
+        #end		
 
 		timeBarBG.visible = false;
 		timeBar.visible = false;
@@ -4307,7 +4323,7 @@ class PlayState extends MusicBeatState
 					'mouse-phase2' | 'mouse-smile' | 'mouse-happy' | 'satan-chad' | 'oswald-suicide':
 					notehealthdmg = 0.025;
 
-					if (health > 0.5)
+					if (health > 0.6)
 						if (note.isSustainNote)
 						{
 							health -= notehealthdmg / 3;
