@@ -271,7 +271,10 @@ class MainMenuState extends MusicBeatState
 			FlxTween.color(resetText, 1, FlxColor.WHITE, FlxColor.YELLOW, {type: PINGPONG});
 
 		changeItem();
-
+		
+		#if android
+        addVirtualPad(UP_DOWN, A_B);
+        #end
 		super.create();
 	}
 

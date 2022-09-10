@@ -49,6 +49,7 @@ class WarningState extends MusicBeatState
 
 	override function create()
 	{
+                
 		super.create();
 
 		if (ClientPrefs.doNotShowWarnings)
@@ -132,6 +133,11 @@ class WarningState extends MusicBeatState
 
 		var option:Option = new Option('Intensive Shaders', "Uncheck this if you don't want to run Intensive Shaders!", 'intensiveShaders', 'bool', true);
 		addOption(option);
+		
+		#if android
+                addVirtualPad(UP_DOWN, A_B_E);
+                addPadCamera();
+                #end
 
 		genOptions();
 	}
@@ -328,7 +334,7 @@ class WarningState extends MusicBeatState
 				reloadCheckboxes();
 			}
 
-			if (FlxG.keys.justPressed.SPACE && canPressSpace)
+			if (FlxG.keys.justPressed.SPACE || _virtualpad.buttonE.justPressed && canPressSpace)
 			{
 				canMove = false;
 

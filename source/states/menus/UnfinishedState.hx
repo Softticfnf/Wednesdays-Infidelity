@@ -52,6 +52,7 @@ class UnfinishedState extends MusicBeatState
 
 	override function create()
 	{
+                
 		super.create();
 
 		FlxG.camera.alpha = 0;
@@ -74,6 +75,11 @@ class UnfinishedState extends MusicBeatState
 
 		add(warnText2);
 
+                #if android 
+                addVirtualPad(NONE, A);
+                addPadCamera();
+                #end
+
 		warnText2.screenCenter();
 		warnText2.y += 80;
 
@@ -89,7 +95,7 @@ class UnfinishedState extends MusicBeatState
 	{
 		super.update(elapsed);
 
-		if (canPress && (FlxG.keys.justPressed.SPACE || FlxG.keys.justPressed.ENTER))
+		if (canPress && (FlxG.keys.justPressed.SPACE || _virtualpad.buttonA.justPressed)) 
 		{
 			canPress = false;
 

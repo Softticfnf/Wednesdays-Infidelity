@@ -120,7 +120,7 @@ class CreditsState extends MusicBeatState
 			[
 				"Lean",
 				'Lean',
-				'Musician, Coder, Animation Helper, and Sound Effects',
+				'Extra Musician, Coder, Animation Helper, and Sound Effects',
 				'https://twitter.com/NewLeandapper',
 				"816954"
 			],
@@ -131,15 +131,14 @@ class CreditsState extends MusicBeatState
 				'https://youtube.com/c/Flaconadir',
 				"9b2526"
 			],
-			["Yirius", 'Yirius', 'Extra Coder', 'https://twitter.com/Yirius125', "7d5327"],
+			["iKenny", 'Kenny', 'Musician', 'https://twitter.com/KennyL_UwU', "7d5327"],
 			[
 				"ReddudeXD",
 				'Reddude',
-				'Kriman't Musician and Artist',
+				'Carnival in toyland Musician',
 				'https://twitter.com/reddudemodderxd',
 				"c9514b"
 			],
-			["iKenny", 'Kenny', 'Carnival in Toyland Musician', 'https://twitter.com/KennyL_UwU', "7d5327"],
 			[
 				"Tok",
 				'Tok',
