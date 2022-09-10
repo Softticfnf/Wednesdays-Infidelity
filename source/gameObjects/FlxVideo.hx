@@ -62,7 +62,7 @@ class FlxVideo extends FlxBasic
 			}
 		});
 		netStream.play(name);
-		#elseif desktop
+		#elseif android 
 		var video:MP4Handler = new MP4Handler(focus);
 		video.playVideo(name);
 		video.finishCallback = onVLCComplete;
@@ -84,6 +84,7 @@ class FlxVideo extends FlxBasic
 
 		return pDir + fileName;
 	}
+        #end 
 
 	public function onVLCComplete()
 	{
@@ -102,7 +103,7 @@ class FlxVideo extends FlxBasic
 		{
 			finishCallback();
 		}
-	}
-	#end
+	} 
+	
 	#end
 }
